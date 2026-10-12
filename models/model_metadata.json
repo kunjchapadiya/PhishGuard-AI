@@ -1,0 +1,85 @@
+{
+    "model_type": "RandomForestClassifier",
+    "n_estimators": 100,
+    "features": [
+        "isHTTP",
+        "length",
+        "isSpeacialChar",
+        "isDot",
+        "isDash",
+        "isSlash",
+        "isQuestionMark",
+        "isEqual",
+        "isNumber",
+        "isChar",
+        "path_depth",
+        "query_param_count",
+        "TLD_Frequency"
+    ],
+    "standard_scaled_features": [
+        "length",
+        "isNumber",
+        "isChar",
+        "isDot",
+        "isDash",
+        "isSlash",
+        "isQuestionMark",
+        "isEqual",
+        "path_depth",
+        "query_param_count"
+    ],
+    "classes": [
+        "Phishing",
+        "legitimate"
+    ],
+    "metrics": {
+        "accuracy": 0.9674,
+        "f1_score_weighted": 0.9672029506412054,
+        "confusion_matrix": [
+            [2936, 231],
+            [95, 6738]
+        ],
+        "confusion_matrix_breakdown": {
+            "true_phishing": 2936,
+            "false_legitimate_missed": 231,
+            "false_phishing_alarm": 95,
+            "true_legitimate": 6738,
+            "labels": {
+                "row_0": "Actual Phishing",
+                "row_1": "Actual Legitimate",
+                "col_0": "Predicted Phishing",
+                "col_1": "Predicted Legitimate"
+            }
+        },
+        "classification_report": {
+            "Phishing": {
+                "precision": 0.9686572088419664,
+                "recall": 0.9270603094411115,
+                "f1-score": 0.9474023878670539,
+                "support": 3167.0
+            },
+            "legitimate": {
+                "precision": 0.9668532070598365,
+                "recall": 0.9860968827747695,
+                "f1-score": 0.9763802347485872,
+                "support": 6833.0
+            },
+            "accuracy": 0.9674,
+            "macro avg": {
+                "precision": 0.9677552079509014,
+                "recall": 0.9565785961079405,
+                "f1-score": 0.9618913113078205,
+                "support": 10000.0
+            },
+            "weighted avg": {
+                "precision": 0.967424534424237,
+                "recall": 0.9674,
+                "f1-score": 0.9672029506412054,
+                "support": 10000.0
+            }
+        }
+    },
+    "training_date": "2026-10-12 22:20:46",
+    "total_training_records": 50000,
+    "execution_time_seconds": 2.34
+}
