@@ -2,7 +2,7 @@
 // PhishGuard AI - Extension Options Logic
 // ==========================================================================
 
-const DEFAULT_API_URL = "http://127.0.0.1:5000";
+const DEFAULT_API_URL = "https://phishguard-ai-46qm.onrender.com";
 const DEFAULT_THRESHOLD = 90;
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         autoProtect: true,
         notificationThreshold: DEFAULT_THRESHOLD
     });
+
+    if (data.apiUrl === "http://127.0.0.1:5000" || data.apiUrl === "http://localhost:5000") {
+        data.apiUrl = DEFAULT_API_URL;
+        await chrome.storage.sync.set({ apiUrl: DEFAULT_API_URL });
+    }
 
     apiUrlInput.value = data.apiUrl;
     thresholdInput.value = data.notificationThreshold;
@@ -56,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 showMessage(`⚠️ API responded, but reported: ${JSON.stringify(json)}`, "error");
             }
         } catch (err) {
-            showMessage(`❌ Connection failed to ${testUrl}. Ensure 'python app.py' is running. Error: ${err.message}`, "error");
+            showMessage(`❌ Connection failed to ${testUrl}. Ensure the backend service is online. Error: ${err.message}`, "error");
         }
     });
 

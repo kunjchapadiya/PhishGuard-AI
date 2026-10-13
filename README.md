@@ -36,11 +36,12 @@ PhishGuard AI/
 
 ## 🚀 How to Run
 
-### Step 1: Start the Backend (Already running)
-```bash
-python app.py
+### Step 1: Live Cloud Backend API
+The backend is deployed and live at:
+```text
+https://phishguard-ai-46qm.onrender.com/
 ```
-Backend API is active on `http://127.0.0.1:5000`.
+*(Optional) To run locally instead: `python app.py` on `http://127.0.0.1:5000`.*
 
 ### Step 2: Load Extension in Chrome
 1. In Google Chrome, go to `chrome://extensions/`
@@ -70,10 +71,9 @@ Evaluated on 10,000 unseen test URLs:
 ---
 
 ## ☁️ Cloud Deployment (Render / Railway)
+The backend service is currently hosted on Render:
+- **Live Endpoint**: `https://phishguard-ai-46qm.onrender.com/`
+- **Health Check**: `https://phishguard-ai-46qm.onrender.com/health`
 
-When you're ready to share your extension with others:
-1. Push this repository to GitHub.
-2. Connect it to [Render](https://render.com) or [Railway](https://railway.app).
-3. Copy your live cloud API URL (e.g. `https://your-phishguard-api.onrender.com`).
-4. In the extension, click the **Settings gear icon**, paste your cloud URL, and click **Save Settings**!
+To change or update your backend URL, configure `.env` (`BACKEND_API='https://phishguard-ai-46qm.onrender.com/'`) or use the extension Settings page.
 

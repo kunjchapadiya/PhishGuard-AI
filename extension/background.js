@@ -3,7 +3,7 @@
 // Automatically monitors visited tabs and alerts user of phishing threats
 // ==========================================================================
 
-const DEFAULT_API_URL = "http://127.0.0.1:5000";
+const DEFAULT_API_URL = "https://phishguard-ai-46qm.onrender.com";
 const DEFAULT_NOTIFICATION_THRESHOLD = 90; // Confidence threshold in % (above 90%)
 
 // Prevent duplicate spam notifications for the same URL in short intervals
@@ -26,6 +26,11 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
                 autoProtect: true,
                 notificationThreshold: DEFAULT_NOTIFICATION_THRESHOLD
             });
+
+            if (settings.apiUrl === "http://127.0.0.1:5000" || settings.apiUrl === "http://localhost:5000") {
+                settings.apiUrl = DEFAULT_API_URL;
+                chrome.storage.sync.set({ apiUrl: DEFAULT_API_URL });
+            }
 
             if (!settings.autoProtect) return;
 

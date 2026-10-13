@@ -2,7 +2,7 @@
 // PhishGuard AI - Extension Popup Logic
 // ==========================================================================
 
-const DEFAULT_API_URL = "http://127.0.0.1:5000";
+const DEFAULT_API_URL = "https://phishguard-ai-46qm.onrender.com";
 
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. DOM Elements
@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. Load API URL setting from chrome.storage
     const settings = await chrome.storage.sync.get({ apiUrl: DEFAULT_API_URL, autoScan: true });
+    if (settings.apiUrl === "http://127.0.0.1:5000" || settings.apiUrl === "http://localhost:5000") {
+        settings.apiUrl = DEFAULT_API_URL;
+        chrome.storage.sync.set({ apiUrl: DEFAULT_API_URL });
+    }
     const apiUrl = settings.apiUrl.replace(/\/+$/, '');
 
     // Display formatted API host in footer

@@ -21,6 +21,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger("PhishGuardAI.API")
 
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 app = Flask(__name__)
 app.config["JSON_SORT_KEYS"] = False
 START_TIME = time.time()
@@ -248,5 +254,6 @@ def internal_server_error(e):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     debug = os.environ.get("FLASK_DEBUG", "True").lower() == "true"
-    print(f"Starting PhishGuard AI Backend for Chrome Extension on http://127.0.0.1:{port}")
+    backend_url = os.environ.get("BACKEND_API", f"http://127.0.0.1:{port}")
+    print(f"Starting PhishGuard AI Backend on {backend_url}")
     app.run(host="0.0.0.0", port=port, debug=debug)

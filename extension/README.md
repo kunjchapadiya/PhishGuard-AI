@@ -4,12 +4,12 @@ Real-time browser extension that monitors URLs and flags phishing threats using 
 
 ---
 
-## ❓ Do I have to deploy the backend to Render/Railway?
+## 🌐 Live Cloud Backend
 
-- **For testing & local use on your computer:** **NO.**
-  As long as your Flask server is running locally (`python app.py`), the extension will communicate directly with `http://127.0.0.1:5000`.
-- **For sharing with others or publishing to Chrome Web Store:** **YES.**
-  To let anyone use your extension without having your personal computer running, deploy the backend to Render, Railway, or AWS, and update the API URL in the extension settings.
+- **Default Live API:** The extension is pre-configured to communicate with the live cloud backend:
+  `https://phishguard-ai-46qm.onrender.com/`
+- **For local offline development:**
+  Run `python app.py` locally and point the API URL in the extension settings to `http://127.0.0.1:5000`.
 
 ---
 
